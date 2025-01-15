@@ -12,7 +12,7 @@ use spl_tlv_account_resolution::{
 };
 use spl_transfer_hook_interface::instruction::ExecuteInstruction;
 
-declare_id!("YDao1FevSHaCrn1ZoCVSugKh2RTQYKiDocwaM5Pbtkw");
+declare_id!("C5wGVxugHPB9VBZKZdSnPYXoVkxgfN1YnYtqF5V8Ljsu");
 
 #[program]
 pub mod transfer_hook_whale {
@@ -114,7 +114,7 @@ pub struct InitializeExtraAccountMeta<'info> {
     #[account(mut, seeds=[b"extra-account-metas", mint.key().as_ref()], bump)]
     pub extra_account_meta_list: AccountInfo<'info>,
     pub mint: InterfaceAccount<'info, Mint>,
-    #[account(init, seeds=[b"whale_account"], bump, payer=payer, space=8+32+8)]
+    #[account(init_if_needed, seeds=[b"whale_account"], bump, payer=payer, space=8+32+8)]
     pub latest_whale_account: Account<'info, WhaleAccount>,
     pub token_program: Interface<'info, TokenInterface>,
     pub associated_token_program: Program<'info, AssociatedToken>,
